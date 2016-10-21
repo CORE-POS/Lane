@@ -1,1 +1,0 @@
-coopcred.mysql.inc
