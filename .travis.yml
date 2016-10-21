@@ -16,7 +16,7 @@ branches:
 
 addons:
     code_climate:
-        repo_token: 461be60a44fc2293c80a05712a1aa18ff7d12effec9a806d7722435b12ea2bbe
+        repo_token: replace_me
 
 # test both msyqli and PDO 
 env:
@@ -25,12 +25,8 @@ env:
         - DB_DRIVER=mysqli
 
 install:
-    - sh tests/fannie/travis-init.sh
     - sh tests/pos/travis-init.sh
-    - rm composer.json
-    - rm composer.lock
-    - composer init -n
-    - composer require codeclimate/php-test-reporter johnkary/phpunit-speedtrap twig/twig twig/extensions
+    - composer install
     - mkdir -p build/logs
     - npm install acorn
 
