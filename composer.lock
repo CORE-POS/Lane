@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "11cefceda7a7f28af04eceda08e55f9b",
-    "content-hash": "794f22ed03373306c3ac9175416c9b1f",
+    "hash": "6d4962fd7db71a6227b6d0ad0dbcb8f1",
+    "content-hash": "5a48aaf9bb4cad414ed094822c6003d7",
     "packages": [
         {
             "name": "components/jquery",
@@ -81,20 +81,24 @@
         },
         {
             "name": "corepos/composer-installer",
-            "version": "1.0.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CORE-POS/ComposerInstaller.git",
-                "reference": "7ea84847cc5906a7316483fc423fcdfdf4c1e79e"
+                "reference": "08c6afda3a2ce2c2999254bdff341f86b6d01139"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CORE-POS/ComposerInstaller/zipball/7ea84847cc5906a7316483fc423fcdfdf4c1e79e",
-                "reference": "7ea84847cc5906a7316483fc423fcdfdf4c1e79e",
+                "url": "https://api.github.com/repos/CORE-POS/ComposerInstaller/zipball/08c6afda3a2ce2c2999254bdff341f86b6d01139",
+                "reference": "08c6afda3a2ce2c2999254bdff341f86b6d01139",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.1",
+                "phpunit/phpunit": "^5.3"
             },
             "type": "composer-plugin",
             "extra": {
@@ -103,7 +107,10 @@
             "autoload": {
                 "psr-4": {
                     "COREPOS\\ComposerInstaller\\": "src/"
-                }
+                },
+                "exclude-from-classmap": [
+                    "/test"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -116,7 +123,7 @@
                 }
             ],
             "description": "A composer plugin to install CORE POS plugins",
-            "time": "2016-05-27 21:53:51"
+            "time": "2016-05-28 15:57:45"
         },
         {
             "name": "endroid/qrcode",
