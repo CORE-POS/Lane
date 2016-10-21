@@ -5,8 +5,7 @@ composer.phar
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
 # composer.lock
 *.pyc
-pos/is4c/ini/ini.php
-pos/is4c/ini/ini.json
+pos/is4c-nf/js/composer-components
 *~
 pos/is4c-nf/log/*.log
 pos/is4c-nf/ini.php
