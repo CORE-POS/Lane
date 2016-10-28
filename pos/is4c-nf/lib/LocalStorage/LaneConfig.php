@@ -23,14 +23,16 @@
 
 namespace COREPOS\pos\lib\LocalStorage;
 
+// autoloading hasn't kicked in yet
+// this could be improved
 if (!class_exists('COREPOS\common\cache\file\CacheItemPool', false)) {
-    include(dirname(__FILE__) . '/../../../../common/cache/file/CacheItemPool.php');
+    include(dirname(__FILE__) . '/../../../../vendor/corepos/common-bundle/src/cache/file/CacheItemPool.php');
 }
 if (!class_exists('COREPOS\common\cache\php\CacheItemPool', false)) {
-    include(dirname(__FILE__) . '/../../../../common/cache/php/CacheItemPool.php');
+    include(dirname(__FILE__) . '/../../../../vendor/corepos/common-bundle/src/cache/php/CacheItemPool.php');
 }
 if (!class_exists('COREPOS\common\cache\file\CacheItem', false)) {
-    include(dirname(__FILE__) . '/../../../../common/cache/file/CacheItem.php');
+    include(dirname(__FILE__) . '/../../../../vendor/corepos/common-bundle/src/cache/file/CacheItem.php');
 }
 
 /**
