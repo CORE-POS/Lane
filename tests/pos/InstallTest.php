@@ -70,6 +70,10 @@ class InstallTest extends PHPUnit_Framework_TestCase
             $dbc->query('TRUNCATE TABLE ' . $dbc->identifierEscape($sample));
             $loaded = COREPOS\pos\install\data\Loader::loadSampleData($dbc, $sample, false);
             $output = ob_get_clean();
+            if ($sample == 'products') {
+                var_dump($loaded);
+                var_dump($output);
+            }
 
             $this->assertEquals(true, $loaded, 'Error with sample data for ' . $sample . ' (' . $output . ')');
         }
