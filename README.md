@@ -1,4 +1,6 @@
 # Lane
+[![travis-ci](https://travis-ci.org/CORE-POS/Lane.svg?branch=master)](https://travis-ci.org/CORE-POS/Lane)
+
 Standalone lane repo
 
 # Install
