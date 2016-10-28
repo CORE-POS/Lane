@@ -765,7 +765,7 @@ class UPC extends Parser
             // New column 20Oct16
             if (isset($table['special_cost']) && isset($table['received_cost'])) {
                 $query .= ', CASE WHEN received_cost <> 0 AND received_cost IS NOT NULL THEN received_cost
-                    CASE WHEN discounttype > 0 AND special_cost <> 0 AND special_cost IS NOT NULL 
+                    WHEN discounttype > 0 AND special_cost <> 0 AND special_cost IS NOT NULL 
                     THEN special_cost ELSE cost END AS cost';
             } else {
                 $query .= ', cost';
@@ -773,6 +773,7 @@ class UPC extends Parser
         }
         $query .= " FROM products WHERE upc = '".$upc."'";
         $result = $dbc->query($query);
+        if (!$result) var_dump($dbc->error());
         $row = $dbc->fetchRow($result);
 
         return $row;
