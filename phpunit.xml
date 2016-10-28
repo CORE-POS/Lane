@@ -35,6 +35,7 @@
             <exclude>
                 <directory>vendor</directory>
                 <file>pos/is4c-nf/lib/Scanning/SpecialUPCs/HouseCoupon.php</file>
+                <directory>pos/is4c-nf/install</directory>
                 <directory>pos/is4c-nf/plugins</directory>
                 <directory>pos/is4c-nf/test</directory>
                 <directory suffix="index.php">.</directory>

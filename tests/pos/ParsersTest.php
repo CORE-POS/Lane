@@ -989,7 +989,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $v = new COREPOS\pos\parser\parse\Void();
         $this->assertEquals(true, $v->check('VD'));
         $json = $v->parse('VD');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record['total'] *= -1;
         $record['quantity'] *= -1;
         $record['ItemQtty'] *= -1;
@@ -1137,7 +1137,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         // cover item-not-found
         $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $u->parse('0041234512345'));
         CoreLocal::set('tare', 0.05);
-        $this->assertInternalType('array', $u->parse('0XA0041234512345'));
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $u->parse('0XA0041234512345'));
         CoreLocal::set('tare', 0.00);
 
         lttLib::clear();
@@ -1146,8 +1146,8 @@ class ParsersTest extends PHPUnit_Framework_TestCase
     function testDriverStatus()
     {
         $ds = new COREPOS\pos\parser\parse\DriverStatus();
-        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $ds->check('POS'));
-        $this->assertInternalType('array', $ds->parse('POS'));
+        $this->assertEquals(true, $ds->check('POS'));
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $ds->parse('POS'));
     }
 
     // mostly for coverage's sake
