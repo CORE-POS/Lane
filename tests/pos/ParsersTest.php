@@ -761,7 +761,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $v = new COREPOS\pos\parser\parse\Void();
         $this->assertEquals(true, $v->check('VD'));
         $json = $v->parse('VD');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record['total'] *= -1;
         $record['quantity'] *= -1;
         $record['ItemQtty'] *= -1;
@@ -776,7 +776,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $u = new COREPOS\pos\parser\parse\UPC();
         $this->assertEquals(true, $u->check('666'));
         $json = $u->parse('666');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record = lttLib::genericRecord();
         $record['upc'] = '0000000000666';
         $record['description'] = 'EXTRA BAG';
@@ -794,7 +794,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $v = new COREPOS\pos\parser\parse\Void();
         $this->assertEquals(true, $v->check('VD'));
         $json = $v->parse('VD');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record['total'] *= -1;
         $record['quantity'] *= -1;
         $record['ItemQtty'] *= -1;
@@ -811,7 +811,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $u = new COREPOS\pos\parser\parse\UPC();
         $this->assertEquals(true, $u->check('666'));
         $json = $u->parse('666');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record = lttLib::genericRecord();
         $record['upc'] = '0000000000666';
         $record['description'] = 'EXTRA BAG';
@@ -830,7 +830,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $v = new COREPOS\pos\parser\parse\Void();
         $this->assertEquals(true, $v->check('VD'));
         $json = $v->parse('VD');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record['total'] *= -1;
         $record['quantity'] *= -1;
         $record['ItemQtty'] *= -1;
@@ -845,7 +845,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $u = new COREPOS\pos\parser\parse\UPC();
         $this->assertEquals(true, $u->check('4627'));
         $json = $u->parse('4627');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record = lttLib::genericRecord();
         $record['upc'] = '0000000004627';
         $record['description'] = 'PKALE';
@@ -875,7 +875,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $v = new COREPOS\pos\parser\parse\Void();
         $this->assertEquals(true, $v->check('VD'));
         $json = $v->parse('VD');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record['total'] *= -1;
         $record['quantity'] *= -1;
         $record['ItemQtty'] *= -1;
@@ -890,7 +890,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $u = new COREPOS\pos\parser\parse\UPC();
         $this->assertEquals(true, $u->check('0003049488122'));
         $json = $u->parse('0003049488122');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record = lttLib::genericRecord();
         $record['upc'] = '0003049488122';
         $record['description'] = 'MINERAL WATER';
@@ -919,7 +919,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $v = new COREPOS\pos\parser\parse\Void();
         $this->assertEquals(true, $v->check('VD'));
         $json = $v->parse('VD');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record['total'] *= -1;
         $record['quantity'] *= -1;
         $record['ItemQtty'] *= -1;
@@ -934,7 +934,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $u = new COREPOS\pos\parser\parse\UPC();
         $this->assertEquals(true, $u->check('0003049488122'));
         $json = $u->parse('0003049488122');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record = lttLib::genericRecord();
         $record['upc'] = '0003049488122';
         $record['description'] = 'MINERAL WATER';
@@ -956,7 +956,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $v = new COREPOS\pos\parser\parse\Void();
         $this->assertEquals(true, $v->check('VD'));
         $json = $v->parse('VD');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record['total'] *= -1;
         $record['quantity'] *= -1;
         $record['ItemQtty'] *= -1;
@@ -1003,7 +1003,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $d = new COREPOS\pos\parser\parse\DeptKey();
         $this->assertEquals(true, $d->check('100DP10'));
         $json = $d->parse('100DP10');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record = lttLib::genericRecord();
         $record['upc'] = '1DP1';
         $record['description'] = 'BBAKING';
@@ -1021,7 +1021,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $v = new COREPOS\pos\parser\parse\Void();
         $this->assertEquals(true, $v->check('VD'));
         $json = $v->parse('VD');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record['total'] *= -1;
         $record['quantity'] *= -1;
         $record['ItemQtty'] *= -1;
