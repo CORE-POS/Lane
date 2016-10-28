@@ -743,7 +743,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $u = new COREPOS\pos\parser\parse\UPC();
         $this->assertEquals(true, $u->check('666'));
         $json = $u->parse('666');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record = lttLib::genericRecord();
         $record['upc'] = '0000000000666';
         $record['description'] = 'EXTRA BAG';
@@ -972,7 +972,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $d = new COREPOS\pos\parser\parse\DeptKey();
         $this->assertEquals(true, $d->check('100DP10'));
         $json = $d->parse('100DP10');
-        $this->assertInternalType('array', $json);
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $json);
         $record = lttLib::genericRecord();
         $record['upc'] = '1DP1';
         $record['description'] = 'BBAKING';
@@ -1085,7 +1085,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $t = new COREPOS\pos\parser\parse\DefaultTender();
         $this->assertEquals(true, $t->check('123ZZ'));
         $this->assertEquals(true, $t->check('CA'));
-        $this->assertInternalType('array', $t->parse('CA'));
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $t->parse('CA'));
         $d = new COREPOS\pos\parser\parse\DeptKey();
         $d->parse('100DP10'); // avoid ending transaction
         $this->assertInternalType('array', $t->parse('1CA'));
@@ -1135,7 +1135,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
         $this->assertNotEquals(false, COREPOS\pos\parser\parse\UPC::requestInfoCallback('20000101'));
 
         // cover item-not-found
-        $this->assertInternalType('array', $u->parse('0041234512345'));
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $u->parse('0041234512345'));
         CoreLocal::set('tare', 0.05);
         $this->assertInternalType('array', $u->parse('0XA0041234512345'));
         CoreLocal::set('tare', 0.00);
@@ -1146,7 +1146,7 @@ class ParsersTest extends PHPUnit_Framework_TestCase
     function testDriverStatus()
     {
         $ds = new COREPOS\pos\parser\parse\DriverStatus();
-        $this->assertEquals(true, $ds->check('POS'));
+        $this->assertInstanceOf('COREPOS\\pos\\parser\\ParseResult', $ds->check('POS'));
         $this->assertInternalType('array', $ds->parse('POS'));
     }
 
