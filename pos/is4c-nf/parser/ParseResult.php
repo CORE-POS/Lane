@@ -31,6 +31,11 @@ class ParseResult implements ArrayAccess, Countable, Iterator, Serializable
         $this->position = 0;
     }
 
+    public function toArray()
+    {
+        return $this->value;
+    }
+
     /**
       Use magic method to create fluent interface
     */
