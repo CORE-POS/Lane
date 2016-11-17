@@ -8,9 +8,10 @@ use \InvalidArgumentException;
 use \Iterator;
 use \LogicException;
 use \Serializable;
+use \JsonSerializable;
 use \UnexpectedValueException;
 
-class ParseResult implements ArrayAccess, Countable, Iterator, Serializable
+class ParseResult implements ArrayAccess, Countable, Iterator, Serializable, JsonSerializable
 {
     private $value = array();
     private $position = null;
@@ -29,6 +30,11 @@ class ParseResult implements ArrayAccess, Countable, Iterator, Serializable
             'retry'=>false,
         );
         $this->position = 0;
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->value;
     }
 
     public function toArray()
