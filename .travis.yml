@@ -16,7 +16,7 @@ branches:
 
 addons:
     code_climate:
-        repo_token: replace_me
+        repo_token: 67366d8ac65880a3f66c348459e1cfee12a1c48cbf79ed53169348623748c50e
 
 # test both msyqli and PDO 
 env:
@@ -34,6 +34,6 @@ script:
     - phpunit -d max_execution_time=0 -c phpunit.xml
     - sh tests/acorn.sh
 
-#after_script:
-#    - vendor/bin/test-reporter
+after_script:
+    - vendor/bin/test-reporter
 
