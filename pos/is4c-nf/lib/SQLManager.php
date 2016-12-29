@@ -27,7 +27,7 @@ namespace COREPOS\pos\lib;
   Autoloader doesn't know about COREPOS\Common yet
 */
 if (!class_exists('\\COREPOS\\common\\SQLManager', false)) {
-    include(dirname(__FILE__) . '/../../../common/SQLManager.php');
+    include(dirname(__FILE__) . '/../../../vendor/corepos/common-bundle/src/SQLManager.php');
 }
 
 class SQLManager extends \COREPOS\common\SQLManager
