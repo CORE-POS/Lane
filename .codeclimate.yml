@@ -4,3 +4,4 @@ languages:
   PHP: true
 exclude_paths:
 - "tests/*"
+- "pos/is4c-nf/scale-drivers"
