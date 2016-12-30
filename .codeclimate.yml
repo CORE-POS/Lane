@@ -3,5 +3,5 @@ languages:
   JavaScript: true
   PHP: true
 exclude_paths:
-- "tests/*"
+- "tests"
 - "pos/is4c-nf/scale-drivers"
