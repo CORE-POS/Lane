@@ -136,11 +136,6 @@ public class RBA_Stub : SPH_IngenicoRBA_Common
             System.Console.WriteLine("Tried to write");
         }
 
-        int count=0;
-        while (last_message != null && count++ < 5) {
-            Thread.Sleep(10);
-        }
-        last_message = b;
         ByteWrite(b);
 
         if (this.verbose_mode > 0) {
@@ -191,14 +186,13 @@ public class RBA_Stub : SPH_IngenicoRBA_Common
                     if (this.verbose_mode > 0) {
                         System.Console.WriteLine("ACK!");
                     }
-                    last_message = null;
                 } else if (b == 0x15) {
                     // NAK
                     // re-send
                     if (this.verbose_mode > 0) {
                         System.Console.WriteLine("NAK!");
                     }
-                    ByteWrite(last_message);
+                    //WriteMessageToDevice(HardResetMessage());
                 } else {
                     // part of a message
                     // force to be byte-sized
