@@ -209,12 +209,14 @@ public class SPH_Datacap_PDCX : SerialPortHandler
                 if (rba != null) {
                     rba.stubStop();
                 }
-                ax_control.CancelRequest();
                 initDevice();
                 break;
             case "termManual":
                 break;
             case "termApproved":
+                if (rba != null) {
+                    rba.showApproved();
+                }
                 break;
             case "termSig":
                 if (rba != null) {
@@ -293,7 +295,9 @@ public class SPH_Datacap_PDCX : SerialPortHandler
             string filename = my_location + sep + "ss-output"+ sep + "tmp" + sep + ticks + ".bmp";
             BitmapBPP.Signature sig = new BitmapBPP.Signature(filename, points);
             parent.MsgSend("TERMBMP" + ticks + ".bmp");
-            
+            if (rba != null) {
+                rba.showApproved();
+            }
         } catch (Exception) {
             return null;
         }

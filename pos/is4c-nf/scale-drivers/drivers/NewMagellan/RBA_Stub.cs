@@ -68,9 +68,16 @@ public class RBA_Stub : SPH_IngenicoRBA_Common
 {
     new private SerialPort sp = null;
 
+    private bool emv_buttons = false;
+
     public RBA_Stub(string p)
     {
         this.port = p;
+    }
+
+    public void SetEMV(bool emv)
+    {
+        this.emv_buttons = emv;
     }
 
     private void initPort()
@@ -88,11 +95,24 @@ public class RBA_Stub : SPH_IngenicoRBA_Common
 
     public void stubStart()
     {
-        initPort();
-        sp.Open();
-        SPH_Running = true;
-        this.SPH_Thread = new Thread(new ThreadStart(this.Read));    
-        SPH_Thread.Start();
+        try {
+            initPort();
+            sp.Open();
+            SPH_Running = true;
+            this.SPH_Thread = new Thread(new ThreadStart(this.Read));    
+            SPH_Thread.Start();
+        } catch (Exception) {}
+    }
+
+    public void showApproved()
+    {
+        try {
+            stubStop();
+            initPort();
+            sp.Open();
+            WriteMessageToDevice(SimpleMessageScreen("Approved"));
+            sp.Close();
+        } catch (Exception) {}
     }
 
     public void stubStop()
@@ -102,6 +122,13 @@ public class RBA_Stub : SPH_IngenicoRBA_Common
             sp.Close();
         } catch (Exception) { }
         SPH_Thread.Join();
+    }
+
+    public void addScreenMessage(string message)
+    {
+        try {
+            WriteMessageToDevice(SetVariableMessage("104", message));
+        } catch (Exception) { }
     }
 
     /**
@@ -164,8 +191,24 @@ public class RBA_Stub : SPH_IngenicoRBA_Common
         try {
             WriteMessageToDevice(GetCardType());
             Thread.Sleep(2000);
+            addPaymentButtons();
+        } catch (Exception) {
+        }
+    }
+
+    private void addPaymentButtons()
+    {
+        try {
             char fs = (char)0x1c;
-            string buttons = "Bbtna,S"+fs+"Bbtnb,S"+fs+"Bbtnc,S"+fs+"Bbtnd,S";
+            string store_name = "Whole Foods Co-op";
+
+            // standard credit/debit/ebt/gift
+            string buttons = "TPROMPT6,"+store_name+fs+"Bbtna,S"+fs+"Bbtnb,S"+fs+"Bbtnc,S"+fs+"Bbtnd,S";
+            if (this.emv_buttons) {
+                // CHIP+PIN button in place of credit & debit
+                buttons = "TPROMPT6,"+store_name+fs+"Bbtnb,CHIP+PIN"+fs+"Bbtnb,S"+fs+"Bbtnc,S"+fs+"Bbtnd,S";
+            }
+
             WriteMessageToDevice(UpdateScreenMessage(buttons));
         } catch (Exception) {
         }
@@ -188,7 +231,8 @@ public class RBA_Stub : SPH_IngenicoRBA_Common
                     }
                 } else if (b == 0x15) {
                     // NAK
-                    // re-send
+                    // Do not re-send
+                    // RBA_Stub is not vital functionality
                     if (this.verbose_mode > 0) {
                         System.Console.WriteLine("NAK!");
                     }
@@ -210,9 +254,7 @@ public class RBA_Stub : SPH_IngenicoRBA_Common
                         System.Console.Write(buffer[i] + " ");
                     }
                     if (Choice(enc.GetString(buffer))) {
-                        WriteMessageToDevice(SimpleMessageScreen("Waiting for total"));
-                    } else {
-                        showPaymentScreen();
+                        WriteMessageToDevice(SimpleMessageScreen("Swipe card when prompted"));
                     }
                     bytes.Clear();
                 }
