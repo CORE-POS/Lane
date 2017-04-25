@@ -28,7 +28,7 @@
         "ircmaxell/password-compat": "^1.0",
         "sebastian/git": "^2.1",
         "corepos/composer-installer": "^2.0",
-        "corepos/common-bundle": "^2.1",
+        "corepos/common-bundle": "^2.2",
         "components/jquery": "^1.0",
         "robloach/component-installer": "^0.2.3"
     },
