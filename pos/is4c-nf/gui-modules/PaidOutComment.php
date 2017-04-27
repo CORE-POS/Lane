@@ -95,16 +95,13 @@ class PaidOutComment extends NoInputCorePage
 
     public function unitTest($phpunit)
     {
-        $this->form = new ValueContainer();
-        $debug = $this->session->Debug_Redirects;
-        $this->session->Debug_Redirects = 1;
+        $this->form = new COREPOS\common\mvc\ValueContainer();
         ob_start();
         $this->form->selectlist = 'Other';
         $phpunit->assertEquals(true, $this->preprocess());
         $this->form->selectlist = 'Test';
         $phpunit->assertEquals(false, $this->preprocess());
         ob_end_clean();
-        $this->session->Debug_Redirects = $debug;
     }
 }
 
